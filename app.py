@@ -233,10 +233,7 @@ BASE_HTML = """
 def render_page(template, **context):
     content = render_template_string(template, **context)
 
-    messages = [
-        (category, message)
-        for category, message in get_flashed_messages()
-    ]
+    messages = get_flashed_messages(with_categories=True)
 
     return render_template_string(
         BASE_HTML,
